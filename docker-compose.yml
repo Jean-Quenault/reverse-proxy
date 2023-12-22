@@ -1,0 +1,24 @@
+version: '3.3'
+
+services:
+  webserver:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+  
+  app1:
+    image: httpd
+    volumes:
+      - ./app1:/usr/local/apache2/htdocs
+  
+  app2:
+    image: httpd
+    volumes:
+      - ./app2:/usr/local/apache2/htdocs
+  
+  app3:
+    image: httpd
+    volumes:
+      - ./app3:/usr/local/apache2/htdocs
