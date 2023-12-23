@@ -1,81 +1,69 @@
 
-# Projet Docker NGINX et PHP
+# Reverse Proxy
 
-Ce projet configure un environnement Docker comprenant un serveur web NGINX et plusieurs instances d'une application PHP, gérées à l'aide de Docker Compose et Docker Swarm.
+This project sets up a Docker environment including an Nginx web server acting as a reverse proxy and several instances of a PHP application, managed using Docker Compose and Docker Swarm.
 
-## Prérequis
+## Prerequisites
 
 - Docker
 - Docker Compose
-- Docker Swarm (pour le déploiement avec des réplicas)
+- Docker Swarm (for deployment with replicas)
 
 ## Configuration
 
-Le projet se compose de deux services principaux définis dans `docker-compose.yml` :
+The project consists of two main services defined in `docker-compose.yml`:
 
-1. `webserver` : Un serveur web NGINX utilisé comme reverse proxy.
-2. `app` : Une application PHP déployée avec Apache, scalée sur plusieurs instances.
+1. `webserver`: An Nginx web server used as a reverse proxy.
+2. `app`: A PHP application deployed with Apache, scaled across multiple instances.
 
 ## Installation
 
-1. Cloner le dépôt :
+1. Clone the repository:
 
    ```
-   git clone [URL_DU_DEPOT]
+   git clone https://github.com/Jean-Quenault/reverse-proxy
    ```
 
-2. Naviguer dans le répertoire du projet :
+2. Navigate to the project directory:
 
    ```
-   cd [NOM_DU_REPERTOIRE]
+   cd reverse-proxy
    ```
 
-## Déploiement
+## Deployment
 
-### Mode Docker Compose
+### Docker Compose Mode
 
-Pour lancer les services en mode Docker Compose :
+To launch the services in Docker Compose mode:
 
 ```
 docker-compose up -d
 ```
 
-### Mode Docker Swarm
+### Docker Swarm Mode
 
-Si vous utilisez Docker Swarm :
+If you are using Docker Swarm:
 
-1. Initialiser Docker Swarm (si ce n'est pas déjà fait) :
+1. Initialize Docker Swarm (if not already done):
 
    ```
    docker swarm init
    ```
 
-2. Déployer avec Docker Stack :
+2. Deploy with Docker Stack:
 
    ```
-   docker stack deploy -c docker-compose.yml [NOM_DU_STACK]
+   docker stack deploy -c docker-compose.yml [STACK_NAME]
    ```
 
-### Scaling des Services
+### Service Scaling
 
-Pour augmenter le nombre de réplicas du service `app` :
+To increase the number of replicas of the `app` service:
 
 ```
-docker service scale [NOM_DU_STACK]_app=[NOMBRE_DE_REPLICAS]
+docker service scale [STACK_NAME]_app=[NUMBER_OF_REPLICAS]
 ```
 
-## Configuration NGINX
+## NGINX Configuration
 
-Les configurations NGINX se trouvent dans le dossier `./nginx`. Vous pouvez les modifier selon vos besoins.
-
-## Contribution
-
-Pour contribuer à ce projet, veuillez créer une branche pour chaque fonctionnalité ou correction et soumettre une pull request pour chaque branche.
-
-## Licence
-
-[CHOISIR LA LICENCE APPROPRIÉE]
-
-## Contact
-
-[INFORMATIONS DE CONTACT]
+Nginx configurations are located in the `./nginx` folder. You can modify them as needed.
